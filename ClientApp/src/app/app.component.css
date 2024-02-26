@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "HarryP";
+  src: url('../assets/font/HARRYP__.TTF');
+}
+
+
+body {
+  background-image: url('../assets/image/parchment.jpg');
+  font-family: HarryP;
+  font-size: 25px;
+  color: #ffe600; /* gold */
+}
+
+button {
+  background-color: #742416; /* Granate */
+  color: #ffe600;
+  transition: background-color 0.3s ease-in-out;
+}
+
+  button:hover {
+    background-color: #a43220;
+  }
+
+
+.magical-element {
+  box-shadow: 0 0 10px rgba(255, 230, 0, 0.8); /*  gold shadow */
+  filter: blur(2px);
+}
+
+.wizard-border {
+  border: 2px solid #742416; /*  granate border */
+  border-radius: 10px;
+}
+
+
