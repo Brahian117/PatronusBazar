@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-5">
+    <div class="container">
+      <form (ngSubmit)="onSubmit()">
+
+
+        <div class="mb-3">
+          <label for="username" class="form-label">Username:</label>
+          <input type="text" class="form-control" id="username" [(ngModel)]="user.Username" name="username" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="user.Password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+
+
+
+      </form>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <img src="../../assets/image/wand.png"/>
+  </div>
+  </div>
