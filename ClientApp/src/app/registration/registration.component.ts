@@ -1,17 +1,27 @@
+// registration.component.ts
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'registration',
   templateUrl: './registration.component.html',
-//  styleUrls: ['./registration.component.css']
+  styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  user = { UserId: 0, Name: '', Phone: 0, Email: '', HogwartsHouse: '', Username: '', Password: '' };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  onSubmit() {
-   
-   
+  onSubmit(form: any) {
+    const formData = form.value;
+
+    this.http.post('/User', formData)
+      .subscribe(
+        (response) => {
+          console.log('Server response:', response);
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
   }
 }
