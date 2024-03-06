@@ -1,3 +1,11 @@
 ﻿@using PatronusBazar
 @namespace PatronusBazar.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form method="post" action="/api/User/Login">
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Login</button>
+</form>
+
+
