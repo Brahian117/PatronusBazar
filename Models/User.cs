@@ -4,7 +4,7 @@
     {
         public int UserId { get; set; }
         public string Name { get; set; }
-        public int Phone { get; set; }
+        public double Phone { get; set; }
         public string Email { get; set; }
         public string HogwartsHouse { get; set; }
         public string Username { get; set; }
