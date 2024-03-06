@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using PatronusBazar.Data;
+
 
 public class Startup
 {
@@ -17,7 +16,6 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddDbContext<PatronusDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
         services.AddControllersWithViews();
     }
 
