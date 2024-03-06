@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "HarryP";
+  src: url('../../assets/font/HARRYP__.TTF');
+}
+
+
+header {
+  font-family: HarryP;
+  font-size: 25px;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -13,3 +23,4 @@ a.nav-link {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
