@@ -1,8 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+// app.module.ts
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -12,7 +14,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
-
+import { ProductsComponent } from './products/product.component';
+import { CarouselBannerComponent } from './crousal/carousel-banner.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +26,13 @@ import { ShopComponent } from './shop/shop.component';
     FetchDataComponent,
     RegistrationComponent,
     LoginComponent,
-    ShopComponent
+    ShopComponent,
+    ProductsComponent,
+    CarouselBannerComponent,
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
@@ -35,10 +42,10 @@ import { ShopComponent } from './shop/shop.component';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'shop', component: ShopComponent }
-    ])
+      { path: 'shop', component: ShopComponent },
+    ]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

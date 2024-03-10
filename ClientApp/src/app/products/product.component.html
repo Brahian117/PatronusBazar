@@ -1,0 +1,26 @@
+<!-- product.component.html -->
+
+<!-- <div class="search-filter-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search products" [(ngModel)]="searchTerm" (input)="filterProducts()">
+  </div>
+  <div class="filter-dropdown">
+    <select id="filter" [(ngModel)]="selectedFilter" (change)="filterProducts()">
+      <option value="price">Price</option>
+      <option value="name">Name</option>
+    </select>
+  </div>
+</div> -->
+
+<div class="product-container">
+  <div *ngFor="let product of filteredProducts" class="product">
+      <div>
+          <img [src]="product.image" alt="{{ product.title }}">
+          <div class="product-details">
+              <h3>{{ product.title }}</h3>
+              <p>${{ product.price }}</p>
+              <button>Add to cart</button>
+          </div>
+      </div>
+  </div>
+</div>
