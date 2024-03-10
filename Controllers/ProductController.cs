@@ -26,18 +26,26 @@ public class ProductController : ControllerBase
         return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
     }
 
-    [HttpGet("/products")]
-    public ActionResult<IEnumerable<PatronusBazar.Models.Product>> GetAllProducts()
+   [HttpGet("/products")]
+public ActionResult<IEnumerable<PatronusBazar.Models.Product>> GetAllProducts()
+{
+    List<PatronusBazar.Models.Product> products = db.GetAllProducts();
+
+    if (products.Count == 0)
     {
-        List<PatronusBazar.Models.Product> products = db.GetAllProducts();
-
-        if (products.Count == 0)
+        var hardcodedProduct = new PatronusBazar.Models.Product
         {
-            return NotFound();
-        }
+            Id = 1,
+            Title = "Default Product",
+            // Add other properties as needed
+        };
 
-        return Ok(products);
+        return Ok(new List<PatronusBazar.Models.Product> { hardcodedProduct });
     }
+
+    return Ok(products);
+}
+
 
     [HttpGet("{id}")]
     public ActionResult<PatronusBazar.Models.Product> GetProduct(int id)

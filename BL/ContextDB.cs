@@ -5,7 +5,7 @@ namespace PatronusBazar.BL
 {
     public class ContextDB
     {
-      private readonly string connectionString = "Server=localhost;User ID=root;Password=1234;Database=patronusbazaar";
+      private readonly string connectionString = "Server=localhost;User ID=root;Password=root;Database=patronusbazaar";
 
 
         public bool CreateUser(User user)
