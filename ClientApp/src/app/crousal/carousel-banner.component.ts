@@ -33,7 +33,7 @@ export class CarouselBannerComponent implements OnInit {
     setTimeout(() => {
       this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
       this.fadeInOutState = 'in';
-    }, 100); // Animation duration
+    }, 200); // Animation duration
   }
 
   nextImage(): void {
