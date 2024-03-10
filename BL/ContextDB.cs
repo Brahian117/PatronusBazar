@@ -11,7 +11,6 @@ namespace PatronusBazar.BL
         public bool CreateUser(User user)
         {
             bool response = true;
-            //testing connection
             // string connectionString = "Server=localhost;User ID=root;Password=1234;Database=patronusbazaar";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
