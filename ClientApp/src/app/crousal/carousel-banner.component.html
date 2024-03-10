@@ -1,0 +1,10 @@
+<!-- carousel-banner.component.html -->
+<div class="carousel-container">
+    <button class="left-button" (click)="prevImage()">&#8249;</button>
+    <button class="right-button" (click)="nextImage()">&#8250;</button>
+  
+    <div class="carousel-image">
+        <img [src]="images[currentImageIndex]" alt="Current Slide" />
+    </div>
+  </div>
+  

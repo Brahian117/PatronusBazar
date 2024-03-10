@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "title": "Harry Potter London Magenta Spirit Jersey",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/London_Magenta_SJBack_large.png?v=1709543476",
+    "description": "Harry Potter themed magenta spirit jersey featuring iconic London design.",
+    "price": 7900
+  },
+  {
+    "id": 2,
+    "title": "Harry Potter London Magenta Fleece Sweatshirt",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/London_Magenta_BorgFront_large.png?v=1709543195",
+    "description": "Harry Potter themed magenta fleece sweatshirt featuring iconic London design.",
+    "price": 7900
+  },
+  {
+    "id": 3,
+    "title": "Harry Potter London Magenta Shopper",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/London_Magenta_Bag2_large.png?v=1709551608",
+    "description": "Harry Potter themed magenta shopper featuring iconic London design.",
+    "price": 600
+  },
+  {
+    "id": 4,
+    "title": "Harry Potter London Magenta Mug",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/London_Magenta_MugFront_large.png?v=1709543310",
+    "description": "Harry Potter themed magenta mug featuring iconic London design.",
+    "price": 1900
+  },
+  {
+    "id": 5,
+    "title": "Harry Potter London Magenta Cup",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/London_Magenta_CupFront_large.png?v=1709543069",
+    "description": "Harry Potter themed magenta cup featuring iconic London design.",
+    "price": 2400
+  },
+  {
+    "id": 6,
+    "title": "Harry Potter London Magenta Socks",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/London_Magenta_socks3_93100b00-dd9f-4a40-a96b-f8ecfcb24173_large.png?v=1709562714",
+    "description": "Harry Potter themed magenta socks featuring iconic London design.",
+    "price": 800
+  },
+  {
+    "id": 7,
+    "title": "House Pride in the Great Hall Enamel Pin",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/HousePridePin2_large.png?v=1708514564",
+    "description": "House Pride in the Great Hall Enamel Pin",
+    "price": 1900
+  },
+  {
+    "id": 8,
+    "title": "Slytherin House Pride Set",
+    "image": "//harrypottershop.co.uk/cdn/shop/files/HousePrideSet_Slyth_large.png?v=1709045392",
+    "description": "Slytherin House Pride Set",
+    "price": 9200
+  },
+  {
+    "id": 9,
+    "title": "Personalised Hogwarts Acceptance Letter",
+    "price": "2000.00",
+    "image": "//harrypottershop.co.uk/cdn/shop/products/PL00010246_1_552dd515-d5e5-4dc7-9284-718e5f78a615_large.png?v=1624519722",
+    "description": "Get your very own personalized Hogwarts acceptance letter and embark on your magical journey at Hogwarts School of Witchcraft and Wizardry."
+  },
+  {
+    "id": 10,
+    "title": "Personalised Gryffindor Robe",
+    "price": "9800",
+    "image": "//harrypottershop.co.uk/cdn/shop/products/1296477_1_c0d5f9df-853f-4641-8695-c5e210a07430_large.png?v=1679995557",
+    "description": "Show your Gryffindor house pride with this personalized Gryffindor robe. Perfect for any wizard or witch attending Hogwarts."
+  },
+  {
+    "id": 11,
+    "title": "Personalised Slytherin Robe",
+    "price": "9800",
+    "image": "//harrypottershop.co.uk/cdn/shop/products/1296484_1_c15f498a-4f1c-46f3-a788-3617a8f731ee_large.png?v=1679993706",
+    "description": "Embrace your cunning and ambition with this personalized Slytherin robe. Join the house known for its resourcefulness and ambition."
+  }
+]
