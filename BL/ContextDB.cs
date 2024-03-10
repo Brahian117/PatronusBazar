@@ -10,7 +10,7 @@ namespace PatronusBazar.BL
         {
             bool response = true;
             //testing connection
-            string connectionString = "Server=localhost;User ID=root;Password=1234;Database=patronusbazaar";
+            string connectionString = "Server=localhost;User ID=root;Password=root;Database=patronusbazaar";
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
