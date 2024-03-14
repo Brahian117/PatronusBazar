@@ -1,26 +1,113 @@
 @font-face {
   font-family: "HarryP";
-  src: url('../../assets/font/HARRYP__.TTF');
+  src: url("../../assets/font/HARRYP__.TTF");
 }
-
 
 header {
   font-family: HarryP;
   font-size: 25px;
 }
+.nav-main {
+  background-color: #0d141e !important;
+  color: white;
+}
+.navbar-light .navbar-brand {
+  color: white !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+  font-size: 26px;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
-  font-size: 36px;
+  font-size: 40px;
 }
 
 a.nav-link {
   font-size: 32px;
 }
 
-
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
+.collection-menu {
+  background-image: url("../../assets/image/shiny-stars.jpg");
+  height: auto;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.menu-categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+.menu-item {
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; /* Make submenu full width */
+  background-color: #fff; /* Change this to your desired background color */
+  z-index: 1; /* Ensure submenu is above other content */
+}
+
+.menu-item:hover .submenu {
+  display: block;
+}
+
+.submenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu ul li {
+  padding: 10px;
+}
+
+.submenu ul li a {
+  text-decoration: none;
+  color: #333; /* Change this to your desired text color */
+  display: block;
+}
+
+.submenu ul li a:hover {
+  color: #fff; /* Change this to your desired text hover color */
+  background-color: #007bff; /* Change this to your desired background hover color */
+}
+
+
+.search-main {
+  padding: 15px 60px;
+  width: 50%;
+  margin: auto;
+}
+.search-input {
+  width: 100%;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+}
+
+
+
+
+
+
 

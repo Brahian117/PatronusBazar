@@ -1,0 +1,16 @@
+/* Add your custom styles here */
+/* You can adjust this according to your design */
+.container {
+    margin-top: 20px;
+  }
+  
+  .col-md-6 {
+    padding: 0 15px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
