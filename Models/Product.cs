@@ -12,6 +12,11 @@ namespace PatronusBazar.Models
         public string? Brand { get; set; }
         public string? Category { get; set; }
         public string? Thumbnail { get; set; }
-        // Add other properties as needed
+        public List<string> Images { get; set; } // List to hold image URLs
+
+        public Product()
+        {
+            Images = new List<string>();
+        }
     }
 }

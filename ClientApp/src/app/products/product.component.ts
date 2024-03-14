@@ -1,6 +1,7 @@
 // products.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +14,7 @@ export class ProductsComponent implements OnInit {
   searchTerm: string = '';
   selectedFilter: string = 'price';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.http.get<any[]>('./assets/products.json').subscribe(data => {
@@ -23,6 +24,9 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  redirectToProductDetail(productId: number) {
+    this.router.navigate(['/product-detail', productId]);
+  }
   filterProducts() {
     this.filteredProducts = this.productList
       .filter(product => product.title.toLowerCase().includes(this.searchTerm.toLowerCase()))

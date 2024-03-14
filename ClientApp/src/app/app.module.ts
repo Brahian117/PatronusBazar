@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
 import { ProductsComponent } from './products/product.component';
 import { CarouselBannerComponent } from './crousal/carousel-banner.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CarouselBannerComponent } from './crousal/carousel-banner.component';
     ShopComponent,
     ProductsComponent,
     CarouselBannerComponent,
+    ProductDetailComponent, // Don't forget to add ProductDetailComponent here
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { CarouselBannerComponent } from './crousal/carousel-banner.component';
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent },
       { path: 'shop', component: ShopComponent },
+      { path: 'product-detail/:id', component: ProductDetailComponent },
     ]),
   ],
   providers: [],

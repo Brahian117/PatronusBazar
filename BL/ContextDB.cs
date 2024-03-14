@@ -64,42 +64,59 @@ namespace PatronusBazar.BL
             return response;
         }
 
-         public bool CreateProduct(Product product)
+       public (bool success, string message) CreateProduct(Product product)
+{
+    bool success = true;
+    string message = "";
+
+    using (MySqlConnection conn = new MySqlConnection(connectionString))
+    {
+        try
         {
-            bool response = true;
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = @"INSERT INTO patronusbazaar.products 
+                                (title, description, price, discountpercentage, rating, stock, brand, category, thumbnail, image1, image2, image3, image4) 
+                                VALUES 
+                                (@title, @description, @price, @discountpercentage, @rating, @stock, @brand, @category, @thumbnail, @image1, @image2, @image3, @image4)";
 
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            cmd.Parameters.AddWithValue("@title", product.Title);
+            cmd.Parameters.AddWithValue("@description", product.Description);
+            cmd.Parameters.AddWithValue("@price", product.Price);
+            cmd.Parameters.AddWithValue("@discountpercentage", product.DiscountPercentage);
+            cmd.Parameters.AddWithValue("@rating", product.Rating);
+            cmd.Parameters.AddWithValue("@stock", product.Stock);
+            cmd.Parameters.AddWithValue("@brand", product.Brand);
+            cmd.Parameters.AddWithValue("@category", product.Category);
+            cmd.Parameters.AddWithValue("@thumbnail", product.Thumbnail);
+            cmd.Parameters.AddWithValue("@image1", product.Images.Count > 0 ? product.Images[0] : null);
+            cmd.Parameters.AddWithValue("@image2", product.Images.Count > 1 ? product.Images[1] : null);
+            cmd.Parameters.AddWithValue("@image3", product.Images.Count > 2 ? product.Images[2] : null);
+            cmd.Parameters.AddWithValue("@image4", product.Images.Count > 3 ? product.Images[3] : null);
+
+            int rowsAffected = cmd.ExecuteNonQuery();
+            if (rowsAffected == 0)
             {
-                try
-                {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO Product(Title, Description, Price, DiscountPercentage, Rating, Stock, Brand, Category, Thumbnail) VALUES (?,?,?,?,?,?,?,?,?)";
-
-                    cmd.Parameters.AddWithValue("param1", product.Title);
-                    cmd.Parameters.AddWithValue("param2", product.Description);
-                    cmd.Parameters.AddWithValue("param3", product.Price);
-                    cmd.Parameters.AddWithValue("param4", product.DiscountPercentage);
-                    cmd.Parameters.AddWithValue("param5", product.Rating);
-                    cmd.Parameters.AddWithValue("param6", product.Stock);
-                    cmd.Parameters.AddWithValue("param7", product.Brand);
-                    cmd.Parameters.AddWithValue("param8", product.Category);
-                    cmd.Parameters.AddWithValue("param9", product.Thumbnail);
-
-                    int x = cmd.ExecuteNonQuery();
-                    if (x == 0)
-                        response = false;
-                }
-                catch (Exception ex)
-                {
-                    // Handle exceptions, log, etc.
-                    Console.WriteLine(ex.Message);
-                    response = false;
-                }
+                success = false;
+                message = "Failed to create product.";
             }
-            return response;
+            else
+            {
+                message = "Product created successfully.";
+            }
         }
+        catch (Exception ex)
+        {
+            // Handle exceptions, log, etc.
+            Console.WriteLine(ex.Message);
+            success = false;
+            message = ex.Message;
+        }
+    }
+    return (success, message);
+}
+
 
         public List<Product> GetAllProducts()
         {
@@ -153,7 +170,7 @@ namespace PatronusBazar.BL
                 try
                 {
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM Product WHERE Id = @productId", conn);
+                    MySqlCommand cmd = new MySqlCommand("SELECT * FROM Products WHERE Id = @productId", conn);
                     cmd.Parameters.AddWithValue("productId", productId);
 
                     using (var reader = cmd.ExecuteReader())
@@ -185,5 +202,72 @@ namespace PatronusBazar.BL
 
             return product;
         }
+
+
+        public bool UpdateProduct(Product updatedProduct)
+        {
+            bool response = true;
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "UPDATE Product SET Title=@Title, Description=@Description, Price=@Price, DiscountPercentage=@DiscountPercentage, Rating=@Rating, Stock=@Stock, Brand=@Brand, Category=@Category, Thumbnail=@Thumbnail WHERE Id=@Id";
+
+                    cmd.Parameters.AddWithValue("@Title", updatedProduct.Title);
+                    cmd.Parameters.AddWithValue("@Description", updatedProduct.Description);
+                    cmd.Parameters.AddWithValue("@Price", updatedProduct.Price);
+                    cmd.Parameters.AddWithValue("@DiscountPercentage", updatedProduct.DiscountPercentage);
+                    cmd.Parameters.AddWithValue("@Rating", updatedProduct.Rating);
+                    cmd.Parameters.AddWithValue("@Stock", updatedProduct.Stock);
+                    cmd.Parameters.AddWithValue("@Brand", updatedProduct.Brand);
+                    cmd.Parameters.AddWithValue("@Category", updatedProduct.Category);
+                    cmd.Parameters.AddWithValue("@Thumbnail", updatedProduct.Thumbnail);
+                    cmd.Parameters.AddWithValue("@Id", updatedProduct.Id);
+
+                    int x = cmd.ExecuteNonQuery();
+                    if (x == 0)
+                        response = false;
+                }
+                catch (Exception ex)
+                {
+                    // Handle exceptions, log, etc.
+                    Console.WriteLine(ex.Message);
+                    response = false;
+                }
+            }
+
+            return response;
+        }
+
+       public bool DeleteProduct(int productId)
+{
+    bool response = true;
+
+    using (MySqlConnection conn = new MySqlConnection(connectionString))
+    {
+        try
+        {
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("DELETE FROM Product WHERE Id=@Id", conn);
+            cmd.Parameters.AddWithValue("@Id", productId);
+
+            int x = cmd.ExecuteNonQuery();
+            if (x == 0)
+                response = false;
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions, log, etc.
+            Console.WriteLine(ex.Message);
+            response = false;
+        }
+    }
+
+    return response;
+}
     }
 }
