@@ -1,29 +1,104 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
 using PatronusBazar.BL;
 using PatronusBazar.Models;
-using System.Data.Common;
+using System;
 
 namespace PatronusBazar.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        readonly ContextDB db = new();
+        private readonly ContextDB db = new ContextDB();
 
-        [HttpPost]
+    [HttpPost("/createuser")]
         public IActionResult Post([FromBody] User user)
         {
-          
-            if (db.CreateUser(user))
-                return Ok(new { Message ="" });
+            try
+            {
+                // Validate user data
+                if (user == null)
+                {
+                    return BadRequest("Invalid user data");
+                }
+                if (string.IsNullOrEmpty(user.Name))
+                {
+                    return BadRequest("User name is required");
+                }
+                if (string.IsNullOrEmpty(user.Email) || !IsValidEmail(user.Email))
+                {
+                    return BadRequest("Invalid email address");
+                }
+                // Add more validation rules as needed
 
-            return BadRequest(new { Error = "Error, try again or contact admin" });
+                // Create user
+                if (db.CreateUser(user))
+                {
+                    return Ok(new { Message = "User created successfully" });
+                }
+                else
+                {
+                    return StatusCode(500, "Failed to create user");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.Error.WriteLine($"Error creating user: {ex.Message}");
 
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+    
+  
+
+    [HttpPost("/login")]
+        public IActionResult Login([FromBody] LoginModel loginModel)
+        {
+            try
+            {
+                // Validate login request
+                if (loginModel == null || string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
+                {
+                    return BadRequest("Invalid login request");
+                }
+
+                // Authenticate user
+                if (db.UserLogin(loginModel.Email, loginModel.Password))
+                {
+                   return Ok(new {  Message = "Login successful" });
+                }
+                else
+                {
+                    return Unauthorized("Invalid email or password");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.Error.WriteLine($"Error during user login: {ex.Message}");
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+    
 
 
+
+
+
+
+        // Helper method to validate email address format
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

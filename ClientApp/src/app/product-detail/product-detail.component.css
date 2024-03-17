@@ -1,16 +1,30 @@
-/* Add your custom styles here */
-/* You can adjust this according to your design */
-.container {
-    margin-top: 20px;
-  }
-  
-  .col-md-6 {
-    padding: 0 15px;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-  }
-  
+.wrap-details{
+margin-top: 40px;
+}
+.image-container {
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.product-details {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.product-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  margin-bottom: 10px;
+}
+
+.product-details button {
+  margin-top: 10px;
+}

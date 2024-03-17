@@ -1,7 +1,13 @@
-// products.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
+interface Product {
+  id: number;
+  title: string;
+  thumbnail: string; 
+  price: number; 
+}
 
 @Component({
   selector: 'app-products',
@@ -9,34 +15,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductsComponent implements OnInit {
-  productList: any[] = [];
-  filteredProducts: any[] = [];
-  searchTerm: string = '';
-  selectedFilter: string = 'price';
+  productList: Product[] = [];
+  loading: boolean = true;
+  error: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    @Inject('BASE_URL') private baseUrl: string
+  ) {}
 
-  ngOnInit(): void {
-    this.http.get<any[]>('./assets/products.json').subscribe(data => {
-      this.productList = data;
-      this.filteredProducts = [...data]; // Initialize filteredProducts with all products
-      this.filterProducts(); // Call filterProducts initially to show all products
-    });
+  ngOnInit() {
+    this.getAllProducts();
+  }
+
+  getAllProducts() {
+    this.http.get<Product[]>(this.baseUrl + 'products')
+      .subscribe(
+        (data) => {
+          console.log('Products fetched successfully:', data);
+          this.productList = data;
+          this.loading = false;
+        },
+        (error) => {
+          console.error('Error fetching products', error);
+          this.loading = false;
+          this.error = 'An error occurred while fetching products. Please try again.';
+        }
+      );
   }
 
   redirectToProductDetail(productId: number) {
     this.router.navigate(['/product-detail', productId]);
-  }
-  filterProducts() {
-    this.filteredProducts = this.productList
-      .filter(product => product.title.toLowerCase().includes(this.searchTerm.toLowerCase()))
-      .sort((a, b) => {
-        if (this.selectedFilter === 'price') {
-          return a.price - b.price;
-        } else if (this.selectedFilter === 'name') {
-          return a.title.localeCompare(b.title);
-        }
-        return 0; // Default case if no valid filter is selected
-      });
   }
 }

@@ -1,11 +1,10 @@
-// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +16,8 @@ import { ShopComponent } from './shop/shop.component';
 import { ProductsComponent } from './products/product.component';
 import { CarouselBannerComponent } from './crousal/carousel-banner.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartComponent } from './cart/cart.component';
+import { CartService } from './cart/cart.service';
 
 @NgModule({
   declarations: [
@@ -30,14 +31,16 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ShopComponent,
     ProductsComponent,
     CarouselBannerComponent,
-    ProductDetailComponent, // Don't forget to add ProductDetailComponent here
+    ProductDetailComponent,
+    CartComponent, // Don't forget to add CartComponent here
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    CommonModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, // Include FormsModule here
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -46,9 +49,12 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
       { path: 'login', component: LoginComponent },
       { path: 'shop', component: ShopComponent },
       { path: 'product-detail/:id', component: ProductDetailComponent },
-    ]),
+      { path: 'cart', component: CartComponent },
+    ],{
+      scrollPositionRestoration: 'enabled'
+    }),
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

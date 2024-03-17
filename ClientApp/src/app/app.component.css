@@ -2,8 +2,9 @@
 
 
 body {
-  background-image: url('../assets/image/parchment.jpg');
-  color: #ffe600; /* gold */
+  background-image: url('../assets/image/sharedimg.jpeg');
+  background-size: cover;
+  color: white;
 }
 
 button {

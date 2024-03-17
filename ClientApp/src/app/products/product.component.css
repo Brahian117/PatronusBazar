@@ -1,4 +1,32 @@
-/* Additional CSS for hover effect */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+  grid-gap: 20px; /* Adjust the gap between grid items */
+  margin-top: 50px;
+  padding: 0 15px; /* Adjusted padding */
+  cursor: pointer;
+}
+
+.product {
+  position: relative;
+  overflow: hidden;
+}
+
+.product:hover .product-details {
+  transform: translateY(0);
+}
+
+.product:hover img {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+.product img {
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease-out;
+}
+
 .product .product-details {
   position: absolute;
   bottom: 0;
@@ -13,41 +41,6 @@
   cursor: pointer;
 }
 
-.product:hover .product-details {
-  transform: translateY(0);
-}
-
-/* Adjustments to existing CSS */
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  overflow-x: auto;
-  margin-top: 50px;
-  padding: 0 15px 0 0; /* Adjusted padding */
-}
-
-.product {
-  flex: 0 0 calc(25% - 20px);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; 
-  margin: 0 20px 20px 0;
-  position: relative; /* Added position relative */
-  overflow: hidden; /* Added overflow hidden to contain absolute positioned details */
-}
-
 .product:hover {
   background-color: #a86;
-}
-
-.product img {
-  max-width: 100%;
-  object-fit: contain; /* Center and maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners for the image */
-  transition: transform 0.3s ease-out; /* Added transition */
-}
-
-.product:hover img {
-  transform: scale(1.1); /* Scale up on hover */
 }

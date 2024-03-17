@@ -1,26 +1,30 @@
-<div class="row">
-  <div class="col-md-5">
-    <div class="container">
-      <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+<div class="row mt-3">
+  <div class="col-md-6">
+    <img src="../../assets/image/account.jpg" class="img-fluid">
+  </div>
+  <div class="col-md-5 d-flex justify-content-center align-items-center">
+    <div class="container form-container">
+      <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)" class="">
 
         <div class="mb-3">
           <label for="name" class="form-label">Name:</label>
-          <input type="text" class="form-control" id="name" name="Name" ngModel required>
+          <input type="text" class="form-control" id="name" name="Name" ngModel required placeholder="Enter your name">
         </div>
 
         <div class="mb-3">
           <label for="phone" class="form-label">Phone:</label>
-          <input type="tel" class="form-control" id="phone" name="Phone" ngModel required>
+          <input type="tel" class="form-control" id="phone" name="Phone" ngModel required placeholder="Enter your phone number">
         </div>
 
         <div class="mb-3">
           <label for="email" class="form-label">Email:</label>
-          <input type="email" class="form-control" id="email" name="Email" ngModel required>
+          <input type="email" class="form-control" id="email" name="Email" ngModel required placeholder="Enter your email">
         </div>
 
         <div class="mb-3">
           <label for="hogwartsHouse" class="form-label">Hogwarts House:</label>
           <select class="form-select" id="hogwartsHouse" name="HogwartsHouse" ngModel required>
+            <option value="">Choose your Hogwarts House</option>
             <option value="Gryffindor">Gryffindor</option>
             <option value="Hufflepuff">Hufflepuff</option>
             <option value="Ravenclaw">Ravenclaw</option>
@@ -30,19 +34,17 @@
 
         <div class="mb-3">
           <label for="username" class="form-label">Username:</label>
-          <input type="text" class="form-control" id="username" name="Username" ngModel required>
+          <input type="text" class="form-control" id="username" name="Username" ngModel required placeholder="Choose a username">
         </div>
 
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
-          <input type="password" class="form-control" id="password" name="Password" ngModel required>
+          <input type="password" class="form-control" id="password" name="Password" ngModel required placeholder="Choose a password">
         </div>
 
         <button type="submit" class="btn btn-primary">Register</button>
       </form>
+      <p class="mt-2">Already have an account? <a href="/login">Login</a></p>
     </div>
-  </div>
-  <div class="col-md-7">
-    <img src="../../assets/image/wand.png" />
   </div>
 </div>

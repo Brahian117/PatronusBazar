@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace PatronusBazar.Models
 {
     public class Product
@@ -13,6 +15,8 @@ namespace PatronusBazar.Models
         public string? Category { get; set; }
         public string? Thumbnail { get; set; }
         public List<string> Images { get; set; } // List to hold image URLs
+        public int UserId { get; set; } // User Id associated with the product
+
 
         public Product()
         {
