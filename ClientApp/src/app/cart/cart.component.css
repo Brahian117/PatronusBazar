@@ -1,0 +1,34 @@
+/* cart.component.css */
+
+.container {
+    margin-top: 55px;
+  }
+  .left-card{
+    background-color: navajowhite;
+  }
+  .left-card img{
+    justify-content: center;
+    left: 20px;
+  }
+  .card {
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .card-img-top {
+    max-height: 150px;
+    object-fit: contain;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .btn-checkout {
+    width: 100%;
+  }
+  

@@ -1,0 +1,17 @@
+.centered-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Set the desired width */
+    border: 2px solid navajowhite; /* Add a black border */
+    padding: 20px; /* Add padding for spacing inside the container */
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Arrange items in a column */
+    border-radius: 20px;
+  }
+  
+  .image-container {
+    text-align: center; /* Center the image horizontally */
+    margin-bottom: 20px; /* Add margin at the bottom for spacing */
+  }

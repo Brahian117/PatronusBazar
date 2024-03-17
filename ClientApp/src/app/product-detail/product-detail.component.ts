@@ -1,6 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,32 +9,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent implements OnInit {
-  productId: any;
+  id: any;
   product: any;
   errorMessage: string = '';
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.productId = params['id']; 
-      if (this.productId) {
-        this.getProductDetails();
-      } else {
-        this.errorMessage = 'Product ID is not provided';
-        console.error(this.errorMessage);
-      }
-    });
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getProductDetails(this.id);
   }
-  
 
-  getProductDetails() {
-    this.http.get(this.baseUrl + `product/${this.productId}`)
+  getProductDetails(id: any) {
+    this.http.get(`http://localhost:4000/products/${id}`)
       .subscribe(
         (data) => {
           this.product = data;
@@ -51,7 +43,20 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart() {
-    // Implement your logic to add the product to the cart
-    console.log('Product added to cart');
+    const cartItem = {
+      ProductId: this.product.ProductId,
+      UserId: 1, 
+      Quantity: 1 
+    };
+    
+    this.http.post('http://localhost:4000/addproduct', cartItem)
+      .subscribe(
+        () => {
+          this.cartService.addToCart(this.product);
+        },
+        (error) => {
+          console.error('Error adding product to cart:', error);
+        }
+      );
   }
 }

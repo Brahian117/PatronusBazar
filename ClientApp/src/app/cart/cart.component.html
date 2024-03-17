@@ -1,0 +1,33 @@
+<!-- cart.component.html -->
+
+<div class="container">
+  <div class="row">
+    <!-- Left side: Product Details -->
+    <div class="col-md-8">
+      <h2>Cart Items</h2>
+      <div *ngFor="let item of cartItems" class="card left-card mb-3">
+        <div class="row g-0">
+          <div class="col-md-12">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <img [src]="item.thumbnail" alt="Product Image" class="img-fluid">
+              <p class="card-text">Price: ${{ item.price }}</p>
+              <p class="card-text">Rating: {{ item.rating }}/5</p>
+              <p class="card-text">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mt-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Checkout Summary</h5>
+          <p>Total Items: {{ cartItems.length }}</p>
+          <p>Total Price: ${{ getTotalPrice() }}</p>
+          <button class="btn btn-primary" (click)="checkout()">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

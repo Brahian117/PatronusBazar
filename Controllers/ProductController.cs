@@ -89,7 +89,7 @@ namespace PatronusBazar.Controllers
             }
         }
 
-          [HttpPut("/updateproduct/{id}")]
+        [HttpPut("/updateproduct/{id}")]
         public ActionResult<PatronusBazar.Models.Product> UpdateProduct(int id, [FromBody] PatronusBazar.Models.Product updatedProduct)
         {
             try
@@ -124,29 +124,99 @@ namespace PatronusBazar.Controllers
         }
 
         [HttpDelete("/deleteproduct/{id}")]
-public ActionResult DeleteProduct(int id)
+        public ActionResult DeleteProduct(int id)
+        {
+            try
+            {
+                bool deletionSuccessful = db.DeleteProduct(id);
+        
+                if (deletionSuccessful)
+                {
+                    return Ok("Product deleted successfully");
+                }
+                else
+                {
+                    return NotFound("Product not found or deletion failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.Error.WriteLine($"Error deleting product: {ex.Message}");
+        
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+        
+
+        [HttpPost("/additemtocart")]
+        public ActionResult AddToCart([FromBody] CartItem cartItem)
+        {
+            try
+            {
+                if (cartItem == null)
+                {
+                    return BadRequest("Invalid cart item data");
+                }
+
+                bool success = db.AddItemToCart(cartItem);
+
+                if (success)
+                {
+                    return Ok("Item added to cart");
+                }
+                else
+                {
+                    return StatusCode(500, "Failed to add item to cart");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for debugging purposes
+                Console.Error.WriteLine($"Error adding item to cart: {ex.Message}");
+
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+
+  [HttpGet("/getcart/{userId}")]
+public ActionResult<IEnumerable<CartItemDetails>> GetCart(int userId)
 {
     try
     {
-        bool deletionSuccessful = db.DeleteProduct(id);
+        List<CartItemDetails> cartItems = db.GetCartItemsWithDetails(userId);
 
-        if (deletionSuccessful)
+        if (cartItems.Count == 0)
         {
-            return Ok("Product deleted successfully");
+            return NotFound("Cart is empty");
         }
-        else
+
+        // Ensure that the Product property is included in the response
+        var response = cartItems.Select(item => new
         {
-            return NotFound("Product not found or deletion failed");
-        }
+            item.CartItemId,
+            item.UserId,
+            item.UserName,
+            item.ProductId,
+            item.Product, // Include the entire product object
+            item.Quantity
+        });
+
+        return Ok(response);
     }
     catch (Exception ex)
     {
-        // Log the exception for debugging purposes
-        Console.Error.WriteLine($"Error deleting product: {ex.Message}");
-
+        Console.Error.WriteLine($"Error retrieving cart items: {ex.Message}");
         return StatusCode(500, "Internal Server Error");
-    }
     }
 }
 
+
+
+
+
+
+
+    }
 }

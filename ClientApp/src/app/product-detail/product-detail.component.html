@@ -1,32 +1,28 @@
-<div class="container">
-    <div class="row">
-      <!-- Left Side: Product Images -->
-      <div class="col-md-6">
-        <div *ngIf="product">
-          <ng-container *ngIf="product.images.length > 0; else thumbnail">
-            <div *ngFor="let image of product.images">
-              <img src="{{ image.url }}" alt="{{ image.alt }}">
-            </div>
-          </ng-container>
-          <ng-template #thumbnail>
-            <img src="{{ product.thumbnail }}" alt="Thumbnail">
-          </ng-template>
+<div class="wrap-details">
+  <div class="row">
+    <!-- Left Side: Product Images -->
+    <div class="col-md-8">
+      <div *ngIf="product" class="image-container">
+        <div class="row mb-5">
+          <div class="col-md-6" *ngFor="let image of product.images; let i = index">
+            <img [src]="image" alt="Product Image {{ i }}" class="img-fluid">
+          </div>
         </div>
       </div>
-  
-      <!-- Right Side: Product Details -->
-      <div class="col-md-6">
-        <div *ngIf="product">
-          <h2>{{ product.title }}</h2>
-          <p><strong>Brand:</strong> {{ product.brand }}</p>
-          <p><strong>Price:</strong> {{ product.price }}</p>
-          <p><strong>Description:</strong> {{ product.description }}</p>
-          <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
-        </div>
-        <div *ngIf="!product">
-          <p>{{ errorMessage }}</p>
-        </div>
+      
+    </div>
+    <!-- Right Side: Product Details -->
+    <div class="col-md-4">
+      <div *ngIf="product" class="product-details">
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.brand }}</p>
+        <p>${{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+      </div>
+      <div *ngIf="!product" class="product-details">
+        <p>{{ errorMessage }}</p>
       </div>
     </div>
   </div>
-  
+</div>

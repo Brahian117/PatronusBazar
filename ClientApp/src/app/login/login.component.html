@@ -1,27 +1,22 @@
-<div class="row">
-  <div class="col-md-5">
-    <div class="container">
-      <form (ngSubmit)="onSubmit()">
-
-
-        <div class="mb-3">
-          <label for="username" class="form-label">Username:</label>
-          <input type="text" class="form-control" id="username" [(ngModel)]="user.Username" name="username" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">Password:</label>
-          <input type="password" class="form-control" id="password" [(ngModel)]="user.Password" name="password" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Login</button>
-
-
-
-      </form>
-    </div>
+<div class="centered-form-container">
+  <div class="image-container">
+    <img src="../../assets/image/wand.png" class="img-fluid" style="max-width: 100px;">
   </div>
-  <div class="col-md-7">
-    <img src="../../assets/image/wand.png"/>
+  <div class="container form-container">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="username" [(ngModel)]="user.Username" name="username" placeholder="Enter your username" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="user.Password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4">Login</button>
+      <p class="mt-2">Don't have an account? <a href="/registration">Register</a></p>
+    </form>
   </div>
-  </div>
+</div>
