@@ -25,9 +25,21 @@ a.navbar-brand {
   font-size: 40px;
 }
 
+.name {
+  color: gold !important;
+  font-size: 34px;
+  text-decoration-line:none;
+}
+
+
+.logout{
+  cursor: pointer;
+}
+
 a.nav-link {
   font-size: 32px;
 }
+
 
 .box-shadow {
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);

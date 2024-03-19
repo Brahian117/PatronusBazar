@@ -9,8 +9,27 @@ import { CartService } from '../cart/cart.service';
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
   itemCount: number = 1;
+  public Name: string|null="";
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+      this.Name = localStorage.getItem("name");
+    
+  }
+
+  public isUserAuthenticated() {
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  public logOut = () => {
+    localStorage.removeItem("jwt");
+  }
+
 
   ngOnInit(): void {
     this.updateItemCount();

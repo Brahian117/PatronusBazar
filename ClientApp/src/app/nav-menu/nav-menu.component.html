@@ -15,16 +15,18 @@
         </button>
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end" [ngClass]="{ show: isExpanded }">
           <ul class="navbar-nav flex-grow">
-            <li class="nav-item" [routerLinkActive]="['link-active']">
+            <li *ngIf="!isUserAuthenticated()" class="nav-item" [routerLinkActive]="['link-active']">
               <a class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-              <a class="nav-link" [routerLink]="['/registration']">Register</a>
+
+            <li *ngIf="isUserAuthenticated()" class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="name">{{Name}}</a>
+            
             </li>
-  
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-              <a class="nav-link" [routerLink]="['/shop']">DiagonAlley</a>
+            <li *ngIf="isUserAuthenticated()" class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link logout" (click)="logOut()">Logout</a>
             </li>
+
             <li class="nav-item" [routerLinkActive]="['link-active']">
               <a class="nav-link" [routerLink]="['/cart']">
                 <i class="fas fa-shopping-cart"></i>

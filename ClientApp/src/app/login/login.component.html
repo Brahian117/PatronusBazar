@@ -3,20 +3,22 @@
     <img src="../../assets/image/wand.png" class="img-fluid" style="max-width: 100px;">
   </div>
   <div class="container form-container">
-    <form (ngSubmit)="onSubmit()">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+
 
       <div class="mb-3">
         <label for="username" class="form-label">Username:</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="user.Username" name="username" placeholder="Enter your username" required>
+        <input type="text" class="form-control" id="username" name="Username" ngModel required placeholder="Choose a username">
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="user.Password" name="password" placeholder="Enter your password" required>
+        <input type="password" class="form-control" id="password" name="Password" ngModel required placeholder="Choose a password">
       </div>
 
       <button type="submit" class="btn btn-primary mt-4">Login</button>
       <p class="mt-2">Don't have an account? <a href="/registration">Register</a></p>
     </form>
   </div>
-</div>
+  </div>

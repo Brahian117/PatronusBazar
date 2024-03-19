@@ -12,7 +12,6 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
-import { ShopComponent } from './shop/shop.component';
 import { ProductsComponent } from './products/product.component';
 import { CarouselBannerComponent } from './crousal/carousel-banner.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -28,7 +27,6 @@ import { CartService } from './cart/cart.service';
     FetchDataComponent,
     RegistrationComponent,
     LoginComponent,
-    ShopComponent,
     ProductsComponent,
     CarouselBannerComponent,
     ProductDetailComponent,
@@ -47,7 +45,6 @@ import { CartService } from './cart/cart.service';
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'shop', component: ShopComponent },
       { path: 'product-detail/:id', component: ProductDetailComponent },
       { path: 'cart', component: CartComponent },
     ],{
