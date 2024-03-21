@@ -1,6 +1,6 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="nav-main navbar navbar-expand-sm navbar-toggleable-sm navbar-light"
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">PatronusBazar</a>
@@ -20,34 +20,65 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item"
-              [routerLinkActive]="['link-active']"
-              [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <!--<li class="nav-item" [routerLinkActive]="['link-active']">
-    <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
-  </li>
-  <li class="nav-item" [routerLinkActive]="['link-active']">
-    <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
-  </li>-->
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/registration']">Registration</a>
-          </li>
-          <!--crisel-->
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/shop']">DiagonAlley</a>
+            <a class="nav-link" [routerLink]="['/registration']">Register</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/cart']"><i class="fas fa-shopping-cart"></i></a>
-          </li>
-          <!--crisel-->
 
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/shop']">DiagonAlley</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/about-us']">About Us</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/orders']">Orders</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/cart']">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  <!-- <div class="collection-menu">
+    <div class="search-main">
+      <input type="text" class="search-input" placeholder="Search..." />
+    </div>
+    <ul class="menu-categories">
+      <li class="menu-item">Collections
+          <div class="submenu">
+              <ul>
+                  <li><a href="#">Collection 1</a></li>
+                  <li><a href="#">Collection 2</a></li>
+                  <li><a href="#">Collection 3</a></li>
+              </ul>
+          </div>
+      </li>
+      <li class="menu-item">Categories
+          <div class="submenu">
+              <ul>
+                  <li><a href="#">Category 1</a></li>
+                  <li><a href="#">Category 2</a></li>
+                  <li><a href="#">Category 3</a></li>
+              </ul>
+          </div>
+      </li>
+      <li class="menu-item">New Arrivals
+          <div class="submenu">
+              <ul>
+                  <li><a href="#">New Arrival 1</a></li>
+                  <li><a href="#">New Arrival 2</a></li>
+                  <li><a href="#">New Arrival 3</a></li>
+              </ul>
+          </div>
+      </li>
+  </ul>
+  
+    
+  </div> -->
 </header>

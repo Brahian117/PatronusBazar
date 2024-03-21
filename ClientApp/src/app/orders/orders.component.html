@@ -1,0 +1,83 @@
+<div class="container-fluid p-0 aboutUsPagefontClr">
+  <!-- Header Start -->
+  <div class="container-fluid header p-0 aboutusContainer">
+    <div class="row align-items-center flex-column-reverse flex-md-row">
+      <div class="col-md-6 p-5 mt-lg-5">
+        <h1 class="h1Sty mt-4">Orders</h1>
+        <nav aria-label="breadcrumb" class="animated fadeIn">
+          <ol class="breadcrumb text-uppercase">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item text-body active" aria-current="page">Orders</li>
+          </ol>
+        </nav>
+        <hr />
+      </div>
+      <div class="col-md-6 animated fadeIn">
+        <img class="img-fluid" src="../assets/image/header.jpg" alt="">
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+  <!-- Order Table Start -->
+  <div class=" page-content page-container" id="page-content">
+    <div class="padding">
+      <div class="row  container d-flex justify-content-center">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card bg-dark text-white">
+            <div class="card-body">
+              <h4 class="card-title">Order History</h4>
+              <hr />
+              <div class="table-responsive text-white">
+                <table class="table table text-white">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Date</th>
+                      <th>User ID</th>
+                      <th>Payment ID</th>
+                      <!-- Add more columns as needed -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of orders">
+                      <td>{{ order.OrderId }}</td>
+                      <td>{{ order.Date }}</td>
+                      <td>{{ order.UserId }}</td>
+                      <td>{{ order.PaymentId }}</td>
+                      <!-- Add more columns as needed -->
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="border rounded p-3">
+        <div class="rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+          <div class="row align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+              <img class="img-fluid rounded w-100" src="../assets/image/call-to-action.jpg" alt="">
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+              <div class="mb-4">
+                <h1 class="mb-3">Contact With Our Certified Employee</h1>
+                <p class="text-dark">Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p>
+              </div>
+              <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
+              <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appointment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Call to Action End -->
+</div>
